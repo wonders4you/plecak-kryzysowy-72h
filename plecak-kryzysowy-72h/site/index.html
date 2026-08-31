@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Plecak kryzysowy 72h – ewakuacyjny, survivalowy, przetrwania. Otwarta, modularna checklista i wiedza o plecaku na pierwsze 72 godziny kryzysu: powódź, pożar, blackout, ewakuacja. HTML + CSS + vanilla JS." />
+  <meta name="keywords" content="plecak kryzysowy, plecak ewakuacyjny, plecak survivalowy, plecak przetrwania, plecak awaryjny, plecak 72h, checklista plecaka, zestaw ewakuacyjny, bug out bag, plecak na wypadek kryzysu" />
+  <meta name="author" content="Plecak Kryzysowy 72h Contributors" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Plecak Kryzysowy / Ewakuacyjny / Survivalowy / Przetrwania 72h" />
+  <meta property="og:description" content="Otwarta, modularna checklista i wiedza o plecaku kryzysowym (ewakuacyjnym, survivalowym, przetrwania) na 72h. Co pakować, dlaczego i jak." />
+  <meta property="og:locale" content="pl_PL" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Plecak Kryzysowy / Ewakuacyjny / Survivalowy / Przetrwania 72h" />
+  <meta name="twitter:description" content="Otwarta, modularna checklista i wiedza o plecaku kryzysowym (ewakuacyjnym, survivalowym, przetrwania) na 72h." />
+  <title>Plecak Kryzysowy / Ewakuacyjny / Survivalowy / Przetrwania 72h – Checklista</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <!-- Blokady motywu przed załadowaniem CSS, aby uniknąć błysku -->
+  <script>
+    (function () {
+      try {
+        var saved = localStorage.getItem('pa-theme');
+        if (saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        }
+      } catch (e) {}
+    })();
+  </script>
+</head>
+<body>
+  <a href="#main" class="skip-link">Przejdź do treści</a>
+
+  <!-- ===== NAGŁÓWEK ===== -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <span class="brand-emoji" aria-hidden="true">🎒</span>
+        <div>
+          <h1 class="brand-title" id="brand-title">Plecak Kryzysowy / Ewakuacyjny / Survivalowy / Przetrwania 72h</h1>
+          <p class="brand-sub" id="brand-sub">Otwarta, modularna checklista i wiedza o plecaku kryzysowym (ewakuacyjnym, survivalowym, przetrwania)</p>
+        </div>
+      </div>
+
+      <div class="header-tools">
+        <!-- Wyszukiwarka -->
+        <div class="search-box">
+          <input type="search" id="search" placeholder="Szukaj w treści…" aria-label="Szukaj w treści" />
+          <button id="search-clear" class="search-clear" aria-label="Wyczyść wyszukiwanie">×</button>
+        </div>
+
+        <!-- Przełącznik motywu -->
+        <button id="theme-toggle" class="theme-toggle" aria-label="Przełącz motyw jasny/ciemny" title="Motyw jasny/ciemny">
+          <span class="theme-icon" aria-hidden="true">🌙</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Nawigacja po modułach -->
+    <nav class="main-nav" aria-label="Nawigacja po sekcjach">
+      <div class="container nav-inner">
+        <a href="#intro" class="nav-link">Wprowadzenie</a>
+        <a href="#filozofia" class="nav-link">Filozofia</a>
+        <a href="#moduly" class="nav-link">Moduły</a>
+        <a href="#poziomy" class="nav-link">Poziomy</a>
+        <a href="#scenariusze" class="nav-link">Scenariusze</a>
+        <a href="#nie-pakowac" class="nav-link">Czego nie pakować</a>
+        <a href="#checklista" class="nav-link">Checklista</a>
+        <a href="#inspiracja" class="nav-link">Inspiracja</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ===== GŁÓWNA TREŚĆ ===== -->
+  <main id="main" class="container">
+
+    <!-- Wprowadzenie -->
+    <section id="intro" class="section" data-section="intro"></section>
+
+    <!-- Filozofia -->
+    <section id="filozofia" class="section" data-section="filozofia"></section>
+
+    <!-- Moduły (renderowane dynamicznie) -->
+    <section id="moduly" class="section" data-section="moduly">
+      <h2>Moduły</h2>
+      <p class="muted">Kliknij moduł, aby rozwinąć. Każdy moduł ma 7 stałych sekcji.</p>
+      <div id="modules-container"></div>
+    </section>
+
+    <!-- Poziomy -->
+    <section id="poziomy" class="section" data-section="poziomy"></section>
+
+    <!-- Scenariusze -->
+    <section id="scenariusze" class="section" data-section="scenariusze"></section>
+
+    <!-- Czego nie pakować -->
+    <section id="nie-pakowac" class="section" data-section="nie-pakowac"></section>
+
+    <!-- Checklista -->
+    <section id="checklista" class="section" data-section="checklista">
+      <h2>Checklista</h2>
+      <div class="checklist-actions">
+        <button id="btn-print" class="btn btn-primary" type="button">🖨️ Drukuj checklistę</button>
+        <button id="btn-copy" class="btn" type="button">📋 Kopiuj checklistę</button>
+        <span id="copy-status" class="copy-status" role="status" aria-live="polite"></span>
+      </div>
+      <div id="checklist-container"></div>
+    </section>
+
+    <!-- Inspiracja (wymóg: link na stronie głównej) -->
+    <section id="inspiracja" class="section inspiration" data-section="inspiracja">
+      <h2>Inspiracja</h2>
+      <p>
+        Projekt powstał pod wpływem gotowego, komercyjnego rozwiązania.
+        Repozytorium nie jest kopią produktu – jest otwartą, rozwijaną przez społeczność wersją wiedzy i checklisty.
+      </p>
+      <p>
+        <a id="inspiration-link-main"
+           href="https://kams.com.pl/p25214,plecak-awaryjny-17.html"
+           target="_blank" rel="noopener noreferrer"
+           class="inspiration-link">
+          Zobacz gotowy produkt, który nas zainspirował: Plecak Awaryjny 17 ↗
+        </a>
+      </p>
+    </section>
+  </main>
+
+  <!-- ===== STOPKA (wymóg: link na wszystkich podstronach) ===== -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-col">
+        <p><strong id="footer-title">Plecak Kryzysowy / Ewakuacyjny / Survivalowy / Przetrwania 72h</strong></p>
+        <p class="muted" id="footer-license">Licencja MIT · v1.0</p>
+        <p class="muted">Otwarte, modularne repozytorium checklisty i wiedzy.</p>
+      </div>
+      <div class="footer-col">
+        <p><strong>Inspiracja</strong></p>
+        <p>
+          <a id="inspiration-link-footer"
+             href="https://kams.com.pl/p25214,plecak-awaryjny-17.html"
+             target="_blank" rel="noopener noreferrer">
+            Plecak Awaryjny 17 ↗
+          </a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <p><strong>Repozytorium</strong></p>
+        <p class="muted">HTML5 + CSS + vanilla JavaScript · bez frameworków · działa offline</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Skrypty: najpierw dane, potem logika -->
+  <script src="data/content.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
