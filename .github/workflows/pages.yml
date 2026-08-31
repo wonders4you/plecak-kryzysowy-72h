@@ -36,7 +36,7 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           # Katalog, który ma zostać opublikowany (czysty HTML/CSS/JS)
-          path: site
+          path: plecak-kryzysowy-72h/site
 
       - name: Deploy to GitHub Pages
         id: deployment
