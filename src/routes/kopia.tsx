@@ -103,7 +103,7 @@ function SnapshotFacts({
   );
 }
 
-function BackupPage() {
+export function BackupPage() {
   const snapshot = useKitStore(useShallow(pickSnapshot));
   const applySnapshot = useKitStore((s) => s.applySnapshot);
   const fileRef = useRef<HTMLInputElement>(null);

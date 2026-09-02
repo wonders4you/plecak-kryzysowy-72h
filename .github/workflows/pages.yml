@@ -1,8 +1,4 @@
-# Automatyczny deploy strony na GitHub Pages
-# Buduje i publikuje zawartość katalogu site/ po pushu na main.
-# Strona to czysty HTML/CSS/JS – nie wymaga builda.
-
-name: Deploy site to GitHub Pages
+name: Deploy app to GitHub Pages
 
 on:
   push:
@@ -14,7 +10,6 @@ permissions:
   pages: write
   id-token: write
 
-# Pozwól na tylko jeden równoległy deploy
 concurrency:
   group: pages
   cancel-in-progress: true
@@ -29,14 +24,25 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install
+        run: npm ci
+
+      - name: Build static app
+        run: npm run build:pages
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
-      - name: Upload site/ as Pages artifact
+      - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Katalog, który ma zostać opublikowany (czysty HTML/CSS/JS)
-          path: plecak-kryzysowy-72h/site
+          path: dist-pages
 
       - name: Deploy to GitHub Pages
         id: deployment

@@ -91,7 +91,7 @@ function IceSheet({
   );
 }
 
-function IcePage() {
+export function IcePage() {
   const ice = useKitStore((s) => s.ice);
   const setIce = useKitStore((s) => s.setIce);
   const meeting = useKitStore((s) => s.meetingPoint);

@@ -7,7 +7,7 @@ import { Check, Phone, RotateCcw } from "lucide-react";
 
 export const Route = createFileRoute("/teraz")({ component: TerazPage });
 
-function TerazPage() {
+export function TerazPage() {
   const done = useKitStore((s) => s.grabDone);
   const toggle = useKitStore((s) => s.toggleGrab);
   const reset = useKitStore((s) => s.resetGrab);

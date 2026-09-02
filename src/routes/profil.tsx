@@ -76,7 +76,7 @@ function Toggle({
   );
 }
 
-function ProfilPage() {
+export function ProfilPage() {
   const profile = useKitStore((s) => s.profile);
   const setProfile = useKitStore((s) => s.setProfile);
   const setOnboarded = useKitStore((s) => s.setOnboarded);

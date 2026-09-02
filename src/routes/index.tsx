@@ -23,7 +23,7 @@ import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/")({ component: Home });
 
-function Home() {
+export function Home() {
   const profile = useKitStore((s) => s.profile);
   const packed = useKitStore((s) => s.packed);
   const custom = useKitStore((s) => s.custom);

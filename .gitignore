@@ -5,6 +5,7 @@ node_modules
 screenshots
 artifacts
 dist
+dist-pages
 .output
 *.log
 .DS_Store

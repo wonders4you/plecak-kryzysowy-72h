@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute, Link, useNavigate, useSearch } from "@tanstack/react-router";
 import { z } from "zod";
 import { useMemo, useState } from "react";
 import {
@@ -28,9 +28,9 @@ export const Route = createFileRoute("/plecak")({
   component: PlecakPage,
 });
 
-function PlecakPage() {
-  const { modul } = Route.useSearch();
-  const navigate = Route.useNavigate();
+export function PlecakPage() {
+  const { modul } = useSearch({ from: "/plecak" });
+  const navigate = useNavigate();
   const profile = useKitStore((s) => s.profile);
   const packed = useKitStore((s) => s.packed);
   const custom = useKitStore((s) => s.custom);

@@ -33,7 +33,7 @@ function hay(parts: (string | undefined)[]) {
   return parts.filter(Boolean).join(" ").toLowerCase();
 }
 
-function KnowledgePage() {
+export function KnowledgePage() {
   const [q, setQ] = useState("");
   const needle = q.trim().toLowerCase();
 

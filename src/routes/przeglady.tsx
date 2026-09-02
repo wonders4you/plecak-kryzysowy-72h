@@ -29,7 +29,7 @@ function status(iso?: string) {
   return "ok" as const;
 }
 
-function ReviewsPage() {
+export function ReviewsPage() {
   const profile = useKitStore((s) => s.profile);
   const custom = useKitStore((s) => s.custom);
   const expiries = useKitStore((s) => s.expiries);

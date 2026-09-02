@@ -1,4 +1,4 @@
-import { createFileRoute, Link, notFound } from "@tanstack/react-router";
+import { createFileRoute, Link, notFound, useParams } from "@tanstack/react-router";
 import {
   HELPLINES,
   MODULE_GUIDES,
@@ -83,8 +83,8 @@ function Related({ slugs }: { slugs: string[] }) {
   );
 }
 
-function ArticlePage() {
-  const { slug } = Route.useParams();
+export function ArticlePage() {
+  const { slug } = useParams({ from: "/wiedza/$slug" });
   const article = findArticle(slug);
   const scenario = SCENARIOS.find((s) => s.id === slug);
   const module = MODULES.find((m) => m.id === slug);
