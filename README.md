@@ -8,7 +8,7 @@ Lokalna, interaktywna checklista na pierwsze 72 godziny kryzysu: domownicy, waga
 
 - Repozytorium: [github.com/wonders4you/plecak-kryzysowy-72h](https://github.com/wonders4you/plecak-kryzysowy-72h)
 - Aplikacja: [wonders4you.github.io/plecak-kryzysowy-72h](https://wonders4you.github.io/plecak-kryzysowy-72h/)
-- Inspiracja: [kams.com.pl — plan na 3 dni bez prądu](https://kams.com.pl/a840,co-zrobic-gdy-zabraknie-pradu-na-3-dni-sprawdzony-plan-awaryjny.html)
+- Inspiracja: [kams.com.pl — Plecak Awaryjny 17](https://kams.com.pl/p25214,plecak-awaryjny-17.html)
 - BHP: [bhp4all.pl](https://bhp4all.pl)
 
 ## Uruchomienie

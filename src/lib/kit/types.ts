@@ -90,6 +90,8 @@ export interface ResolvedItem {
   grabOrder?: number;
   packedLayer?: PackLayer;
   custom?: boolean;
+  shopUrl?: string;
+  shopLabel?: string;
 }
 
 export interface KitSnapshot {

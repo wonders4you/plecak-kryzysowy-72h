@@ -284,21 +284,21 @@ export function KnowledgePage() {
       <p className="text-sm text-muted">
         Inspiracja:{" "}
         <a
-          href="https://kams.com.pl/a840,co-zrobic-gdy-zabraknie-pradu-na-3-dni-sprawdzony-plan-awaryjny.html"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="underline underline-offset-2"
-        >
-          3 dni bez prądu
-        </a>
-        {" · "}
-        <a
           href="https://kams.com.pl/p25214,plecak-awaryjny-17.html"
           target="_blank"
           rel="noopener noreferrer"
           className="underline underline-offset-2"
         >
           Plecak Awaryjny 17
+        </a>
+        {" · "}
+        <a
+          href="https://kams.com.pl/a840,co-zrobic-gdy-zabraknie-pradu-na-3-dni-sprawdzony-plan-awaryjny.html"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="underline underline-offset-2"
+        >
+          3 dni bez prądu
         </a>
         . Źródło:{" "}
         <a

@@ -6,6 +6,7 @@ import type {
   ResolvedItem,
   ScenarioId,
 } from "./types";
+import { KAMS_SHOP } from "./kams";
 
 export const MODULES: {
   id: ModuleId;
@@ -992,6 +993,8 @@ export function resolveCatalog(
         tags: item.tags,
         grabOrder: item.grabOrder,
         packedLayer: item.packedLayer,
+        shopUrl: KAMS_SHOP[item.id]?.url,
+        shopLabel: KAMS_SHOP[item.id]?.label,
       };
     })
     .filter((item) => item.qty > 0);

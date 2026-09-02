@@ -115,12 +115,12 @@ function SiteCredit({ className }: { className?: string }) {
       <p>
         Inspiracja:{" "}
         <a
-          href="https://kams.com.pl/a840,co-zrobic-gdy-zabraknie-pradu-na-3-dni-sprawdzony-plan-awaryjny.html"
+          href="https://kams.com.pl/p25214,plecak-awaryjny-17.html"
           target="_blank"
           rel="noopener noreferrer"
           className="underline-offset-2 hover:text-fg hover:underline"
         >
-          3 dni bez prądu
+          Plecak awaryjny
         </a>
       </p>
     </div>

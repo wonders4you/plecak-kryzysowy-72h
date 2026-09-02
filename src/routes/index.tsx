@@ -77,9 +77,31 @@ export function Home() {
           <span className="block text-forest">Bez paniki.</span>
         </h1>
         <p className="max-w-xl text-base leading-relaxed text-muted">
-          Modularny plecak na pierwsze 72 godziny kryzysu. Lista pod Twój dom,
-          waga na żywo, daty ważności i kolejność chwytania, gdy trzeba wyjść
-          teraz.
+          Modularny plecak na pierwsze 72 godziny kryzysu.{" "}
+          <Link to="/profil" className="underline underline-offset-2 hover:text-fg">
+            Lista pod Twój dom
+          </Link>
+          ,{" "}
+          <Link to="/plecak" className="underline underline-offset-2 hover:text-fg">
+            waga na żywo
+          </Link>
+          ,{" "}
+          <Link to="/przeglady" className="underline underline-offset-2 hover:text-fg">
+            daty ważności
+          </Link>{" "}
+          i{" "}
+          <Link to="/teraz" className="underline underline-offset-2 hover:text-fg">
+            kolejność chwytania
+          </Link>
+          , gdy trzeba wyjść teraz.{" "}
+          <a
+            href="https://kams.com.pl/p25214,plecak-awaryjny-17.html"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline underline-offset-2 hover:text-fg"
+          >
+            (inspiracja)
+          </a>
         </p>
       </header>
 
@@ -108,7 +130,12 @@ export function Home() {
           <div className="flex items-start justify-between gap-4">
             <div>
               <p className="text-xs font-medium uppercase tracking-wider text-muted">
-                Spakowane
+                <Link
+                  to="/plecak"
+                  className="underline-offset-2 hover:text-fg hover:underline"
+                >
+                  Spakowane
+                </Link>
               </p>
               <p className="mt-1 font-display text-2xl">
                 {packedN} / {items.length}

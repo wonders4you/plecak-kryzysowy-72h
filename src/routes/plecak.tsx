@@ -15,7 +15,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { cn, fallbackCopy, formatGrams } from "@/lib/utils";
-import { Copy, Printer, RotateCcw, Search, Trash2 } from "lucide-react";
+import { Copy, ExternalLink, Printer, RotateCcw, Search, Trash2 } from "lucide-react";
 
 const searchSchema = z.object({
   modul: z
@@ -174,7 +174,9 @@ export function PlecakPage() {
         <div className="flex gap-2 overflow-x-auto pb-1">
           <button
             type="button"
-            onClick={() => navigate({ search: { modul: undefined } })}
+            onClick={() =>
+              navigate({ to: "/plecak", search: { modul: undefined } })
+            }
             className={cn(
               "min-h-11 shrink-0 rounded-full px-3 py-2 text-sm",
               !modul ? "bg-ink text-paper" : "bg-paper-2",
@@ -189,6 +191,7 @@ export function PlecakPage() {
               className="shrink-0"
               onClick={() =>
                 navigate({
+                  to: "/plecak",
                   search: { modul: modul === m.id ? undefined : m.id },
                 })
               }
@@ -263,66 +266,77 @@ export function PlecakPage() {
                     !hot && region !== "city" && item.tags.includes(region);
                   return (
                     <li key={item.id}>
-                      <label
+                      <div
                         className={cn(
-                          "flex cursor-pointer items-start gap-3 border-l-4 px-4 py-3",
+                          "flex items-start gap-3 border-l-4 px-4 py-3",
                           MODULE_TONE[m.id].edge,
                           packed[item.id] && "opacity-60",
                           hot && "bg-forest/12",
                           regional && "bg-ink/5",
                         )}
                       >
-                        <input
-                          type="checkbox"
-                          className={cn(
-                            "mt-1 size-5 shrink-0",
-                            MODULE_TONE[m.id].accent,
-                          )}
-                          checked={!!packed[item.id]}
-                          onChange={() => togglePacked(item.id)}
-                        />
-                        <span className="min-w-0 flex-1">
-                          <span className="flex flex-wrap items-center gap-2">
-                            <span
-                              className={cn(
-                                "text-sm font-medium",
-                                packed[item.id] && "line-through",
-                              )}
-                            >
-                              {itemLine(item)}
-                            </span>
-                            {hot ? (
-                              <span className="rounded-full bg-forest px-2 py-0.5 text-[10px] font-medium uppercase tracking-wider text-on-forest">
-                                Kluczowe
+                        <label className="flex min-w-0 flex-1 cursor-pointer items-start gap-3">
+                          <input
+                            type="checkbox"
+                            className={cn(
+                              "mt-1 size-5 shrink-0",
+                              MODULE_TONE[m.id].accent,
+                            )}
+                            checked={!!packed[item.id]}
+                            onChange={() => togglePacked(item.id)}
+                          />
+                          <span className="min-w-0 flex-1">
+                            <span className="flex flex-wrap items-center gap-2">
+                              <span
+                                className={cn(
+                                  "text-sm font-medium",
+                                  packed[item.id] && "line-through",
+                                )}
+                              >
+                                {itemLine(item)}
                               </span>
-                            ) : null}
-                            {regional ? (
-                              <span className="rounded-full bg-ink px-2 py-0.5 text-[10px] font-medium uppercase tracking-wider text-paper">
-                                Region
-                              </span>
-                            ) : null}
-                          </span>
-                          <span className="mt-0.5 flex flex-wrap items-center gap-x-3 text-xs text-muted">
-                            <span className="tabular-nums">
-                              {formatGrams(item.weightGrams)}
+                              {hot ? (
+                                <span className="rounded-full bg-forest px-2 py-0.5 text-[10px] font-medium uppercase tracking-wider text-on-forest">
+                                  Kluczowe
+                                </span>
+                              ) : null}
+                              {regional ? (
+                                <span className="rounded-full bg-ink px-2 py-0.5 text-[10px] font-medium uppercase tracking-wider text-paper">
+                                  Region
+                                </span>
+                              ) : null}
                             </span>
-                            {item.notes ? <span>{item.notes}</span> : null}
+                            <span className="mt-0.5 flex flex-wrap items-center gap-x-3 text-xs text-muted">
+                              <span className="tabular-nums">
+                                {formatGrams(item.weightGrams)}
+                              </span>
+                              {item.notes ? <span>{item.notes}</span> : null}
+                            </span>
                           </span>
-                        </span>
+                        </label>
+                        {item.shopUrl ? (
+                          <a
+                            href={item.shopUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="mt-0.5 inline-flex shrink-0 items-center gap-1 text-xs text-muted underline-offset-2 hover:text-fg hover:underline"
+                            aria-label={`Sklep KAMS: ${item.shopLabel}`}
+                          >
+                            <ExternalLink className="size-3.5" />
+                            {item.shopLabel}
+                          </a>
+                        ) : null}
                         {item.custom ? (
                           <button
                             type="button"
                             className="mt-0.5 text-muted hover:text-brick"
                             aria-label="Usuń własną pozycję"
-                            onClick={(e) => {
-                              e.preventDefault();
-                              removeCustom(item.id);
-                            }}
+                            onClick={() => removeCustom(item.id)}
                           >
                             <Trash2 className="size-4" />
                           </button>
                         ) : null}
-                      </label>
+                      </div>
                     </li>
                   );
                 })}
